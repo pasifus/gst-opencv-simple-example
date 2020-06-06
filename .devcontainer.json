@@ -1,0 +1,25 @@
+// See https://aka.ms/vscode-remote/devcontainer.json for format details.
+{
+	"dockerFile": "dockerfiles/Dockerfile.dev",
+	// "image": "dev",
+	"name": "dev",
+	"extensions": [
+		"ms-vscode.cpptools",
+		"matepek.vscode-catch2-test-adapter",
+		"twxs.cmake",
+		"vector-of-bool.cmake-tools",
+		"ms-vscode.cpptools",
+	],
+	"runArgs": [
+		"-v", "${env:HOME}${env:USERPROFILE}:/host-home-folder",
+		"-e","LD_LIBRARY_PATH=/usr/local/lib",
+		"--name=dev",
+		"--net=host",
+		"--memory=4g",
+		"--privileged=true",
+		"--cap-add=SYS_PTRACE",
+        "--security-opt",
+        "seccomp=unconfined"
+	],
+	"postCreateCommand": ""
+}
