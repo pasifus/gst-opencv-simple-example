@@ -10,7 +10,10 @@ Example also include:
 - vscode container develop
 
 ## Run in docker with display support
-docker run -it --net=host -e DISPLAY -v $HOME/.Xauthority:/root/.Xauthority -e DEVICE_LOCATION=/dev/video0 gst-opencv-simple-example
+docker run -it --net=host -e DISPLAY -v $HOME/.Xauthority:/root/.Xauthority --device=/dev/dri -e DEVICE_LOCATION=/dev/video0 gst-opencv-simple-example bash
+
+# desting x-display support
+gst-launch-1.0 videotestsrc ! autovideosink
 
 ## Tested on platfor
 - Linux (ubuntu 16/18)
